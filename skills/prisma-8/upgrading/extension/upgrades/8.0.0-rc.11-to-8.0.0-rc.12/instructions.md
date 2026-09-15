@@ -1,6 +1,7 @@
 ---
 from: 8.0.0-rc.11
 to: 8.0.0-rc.12
+# contract.d.ts now orders every collection the way contract.json does; a re-emit reorders, nothing else.
 changes:
   - id: expression-codec-on-return-type
     summary: Move custom expression wrapper codec metadata to returnType.codec and remove the separate ExpressionImpl codec argument.

@@ -1,6 +1,7 @@
 ---
 from: 8.0.0-rc.11
 to: 8.0.0-rc.12
+# contract.d.ts now orders every collection the way contract.json does; a re-emit reorders, nothing else.
 changes:
   - id: params-only-sql-facade-prepare
     summary: Replace injected SQL-builder preparation callbacks with params-only callbacks and lexical facade SQL access.
