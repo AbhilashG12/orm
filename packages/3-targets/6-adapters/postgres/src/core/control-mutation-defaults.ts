@@ -1,7 +1,11 @@
 import type { ExecutionMutationDefaultValue } from '@internal/contract/types';
-import { timestampNowControlDescriptor } from '@internal/family-sql/control';
+import {
+  sqlDefaultLiteralTagEntry,
+  timestampNowControlDescriptor,
+} from '@internal/family-sql/control';
 import type { AuthoringTypeNamespace } from '@internal/framework-components/authoring';
 import type {
+  ControlDefaultLiteralTagEntry,
   ControlMutationDefaultEntry,
   DefaultFunctionLoweringContext,
   LoweredDefaultResult,
@@ -416,6 +420,16 @@ export function createPostgresDefaultFunctionRegistry(): ReadonlyMap<
   ControlMutationDefaultEntry
 > {
   return new Map(postgresDefaultFunctionRegistryEntries);
+}
+
+export function createPostgresDefaultLiteralTagRegistry(): ReadonlyMap<
+  string,
+  ControlDefaultLiteralTagEntry
+> {
+  return new Map([
+    ['sql', sqlDefaultLiteralTagEntry('sql`...`')],
+    ['pg.sql', sqlDefaultLiteralTagEntry('pg.sql`...`')],
+  ]);
 }
 
 export function createPostgresMutationDefaultGeneratorDescriptors(): readonly MutationDefaultGeneratorDescriptor[] {

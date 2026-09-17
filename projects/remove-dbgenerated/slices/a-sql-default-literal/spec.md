@@ -12,9 +12,8 @@ After this slice, all of the following are true:
 model T {
   id        String   @id @default(sql`gen_random_uuid()`)
   expires   DateTime @default(sql"(now() + '00:03:00'::interval)")
-  createdAt DateTime @default(pg.sql`now()`)
+  createdAt DateTime @default(pg.sql`CURRENT_TIMESTAMP`)
   tags      String[] @default(sql`'{}'::text[]`)
-  ident     String   @default(gen_random_uuid())
 }
 ```
 
@@ -24,12 +23,26 @@ const T = model('T', {
     id: field.column(textColumn).default(sql`gen_random_uuid()`).id(),
     createdAt: field.column(timestamptzTemporalColumn).default(now()),
     seq: field.column(int4Column).default(autoincrement()),
-    ident: field.column(textColumn).default(genRandomUuid()),
   },
 });
 ```
 
 Every one of those emits, migrates onto a dev database, verifies clean, and `contract infer` prints the named-function forms back.
+
+## Amendments made during the build
+
+These supersede the sections below where they differ.
+
+- A8 is withdrawn (project spec D6, amended): Postgres registers no named `gen_random_uuid()` and TypeScript has no `genRandomUuid()`. Write `` sql`gen_random_uuid()` ``. `contract infer` prints that default as on main until slice C.
+- A body that is exactly `now()` or `autoincrement()` is refused in PSL and TypeScript with a hint to write the named function (shared `reservedSqlDefaultBody` beside `checkSqlDefaultBody`). Any other body passes verbatim.
+- `autoincrement()` on a list column is refused (`PSL_LIST_AUTOINCREMENT_UNSUPPORTED`); other storage defaults on lists lower (project spec D8).
+- A PSL tagged literal has no interpolation rule; the backtick fence has two escapes, `` \` `` and `\\`.
+- A quoted fence is any PSL string literal, double or single quotes.
+- An unterminated backtick fence ends before the next line whose first non-whitespace character is `}`.
+- After SevInf's review: no separate token kind or fence concept. A tagged literal is a qualified name followed by an ordinary string literal, which accepts backticks (two escapes) as a third quote style; whitespace between tag and string is allowed; a backtick string outside a tagged literal is `PSL_BACKTICK_STRING_REQUIRES_TAG`; `PSL_TAGGED_LITERAL_FENCE_EXPECTED` and `PSL_UNTERMINATED_TEMPLATE_LITERAL` are deleted in favour of `PSL_UNTERMINATED_STRING`. `oneOf` is unchanged from main: tag membership and canonicalization are checked at lowering. The language server completes registered tags.
+- The TypeScript `sql` tag reads raw template text through the same escape resolver as PSL.
+- Both targets' planners render the authored default and compare through the resolver in planning and verification alike.
+- `PSL_INVALID_DEFAULT_SQL` and `PSL_LIST_AUTOINCREMENT_UNSUPPORTED` are contributed codes declared in the SQL layer, not framework codes.
 
 ## Design
 
@@ -55,7 +68,7 @@ Files: `packages/1-framework/2-authoring/psl-parser/src/syntax/` (syntax kinds, 
 
 Escape resolution happens before canonicalization and depends on the fence:
 
-- Backtick fence: `` \` `` becomes a backtick; `\\` becomes one backslash; `\$` becomes `$`. Every other backslash sequence is kept as written, both characters. So a SQL body may contain `E'\n'` unchanged.
+- Backtick fence: `` \` `` becomes a backtick; `\\` becomes one backslash. Every other backslash sequence is kept as written, both characters. So a SQL body may contain `E'\n'` unchanged.
 - Quote fence: the existing PSL string-literal escape rules apply, exactly as `StringLiteralExprAst.value()` resolves them. Backticks need no escaping inside a quote fence.
 
 Canonicalization is one shared function used by PSL and TypeScript. New file `packages/1-framework/1-core/framework-components/src/shared/tagged-literal.ts` exporting:
@@ -63,15 +76,14 @@ Canonicalization is one shared function used by PSL and TypeScript. New file `pa
 ```ts
 export type TaggedLiteralCanonicalization =
   | { readonly ok: true; readonly body: string }
-  | { readonly ok: false; readonly reason: 'interpolation' | 'nul' | 'too-large'; readonly offset: number };
+  | { readonly ok: false; readonly reason: 'nul' | 'too-large'; readonly offset: number };
 
 export function canonicalizeTaggedLiteralBody(resolved: string): TaggedLiteralCanonicalization;
 ```
 
 Steps, in this order, on the escape-resolved text:
 
-1. If the text contains `${`, fail with `interpolation` and the offset of the first occurrence. (A body that needs those two characters writes `\${` in a backtick fence, which resolves to `${` before this step only when escaped as `\$` followed by `{`; the check therefore runs on the resolved text and the escaped form passes. Document this in the ADR amendment.)
-2. If the text contains a NUL character, fail with `nul`.
+1. If the text contains a NUL character, fail with `nul`. (An earlier draft also rejected `${`; that rule was dropped: a PSL tagged literal has no interpolation, so there is nothing to reject.)
 3. Replace `\r\n` and lone `\r` with `\n`.
 4. If the first line is blank (empty or only spaces and tabs), drop it.
 5. If the last line is blank, drop it.
@@ -97,7 +109,7 @@ export function taggedLiteral(tags: readonly string[]): TaggedLiteralArgType<Att
 ```
 
 - `ArgTypeKind` gains `'taggedLiteral'`. The `label` is `` `tag`...` `` for the first tag, used in "expected one of" messages.
-- `parse` casts the argument to `TaggedLiteralExprAst`. If it is not one, the leaf diagnostic is `Expected a tagged literal`. If `tag()` is not in `tags`, the diagnostic is `PSL_UNKNOWN_DEFAULT_LITERAL_TAG` with message `Unknown literal tag "<tag>". Known tags: <comma-separated tags in registration order>.` If `body()` is undefined, the diagnostic is one of `PSL_TAGGED_LITERAL_INTERPOLATION` (`Tagged literals do not support ${...} interpolation.`), `PSL_TAGGED_LITERAL_NUL` (`Tagged literals must not contain NUL characters.`), `PSL_TAGGED_LITERAL_TOO_LARGE` (`Tagged literal exceeds 65536 bytes.`), each at the literal's span. Otherwise `ok({ tag, body, span })`.
+- `parse` casts the argument to `TaggedLiteralExprAst`. If it is not one, the leaf diagnostic is `Expected a tagged literal`. If `tag()` is not in `tags`, the diagnostic is `PSL_UNKNOWN_DEFAULT_LITERAL_TAG` with message `Unknown literal tag "<tag>". Known tags: <comma-separated tags in registration order>.` If `body()` is undefined, the diagnostic is one of `PSL_TAGGED_LITERAL_NUL` (`Tagged literals must not contain NUL characters.`), `PSL_TAGGED_LITERAL_TOO_LARGE` (`Tagged literal exceeds 65536 bytes.`), each at the literal's span. Otherwise `ok({ tag, body, span })`.
 
 ### A5. The tag registry
 
@@ -136,7 +148,7 @@ Its `lower` runs `checkSqlDefaultBody(body)` (below) and returns `{ ok: true, va
 
 ### A6. The body check
 
-New function in the SQL family, beside the tag entry:
+New function in the SQL contract package (`packages/2-sql/1-core/contract/src/default-sql-body.ts`, exported from `@internal/sql-contract/validators`), because the TypeScript builder needs it too and cannot depend on the family. The family's control export re-exports it for the tag entry and the planners. (Amended during dispatch 3; the first draft placed it in the family.)
 
 ```ts
 /** Returns undefined when the body may be rendered as `DEFAULT (<body>)`, else the reason. */
@@ -164,6 +176,8 @@ File: [`postgres/src/core/control-mutation-defaults.ts`](../../../../packages/3-
 - The language-server completion test gains `gen_random_uuid` in the Postgres function list.
 
 ### A9. SQLite verifies defaults exactly the way Postgres does
+
+(Amended during dispatch 3.) The SQLite resolver runs only where verify derives the live and expected schemas (`diffSqliteSchema`), not in the shared derivation the planners also use, because the planners render DDL from the resolved default and D4 forbids changing the authored SQL in DDL. Postgres is unchanged because its resolver returns the authored expression unchanged for every function default it does not recognise.
 
 Postgres passes `postgresResolveDefault` into the family's `contract-to-schema-ir` resolver hook so an authored function expression is parsed the same way an introspected one is before comparison. SQLite provides the equivalent:
 
@@ -222,7 +236,7 @@ Tokenizer and parser (`psl-parser/test`):
 - backtick fence single line; multi-line; escaped backtick; `\\`; `\$`; unterminated → `PSL_UNTERMINATED_TEMPLATE_LITERAL`; tag with dots; whitespace between tag and fence → `PSL_TAGGED_LITERAL_FENCE_EXPECTED`; quote fence; `printSyntax` round-trips source; formatter leaves a multi-line body byte-identical.
 
 Canonicalization (`framework-components/test`):
-- each of the nine steps with a table of input → output; `${` → `interpolation`; `\${` resolved → passes; NUL; 65537 bytes → `too-large`; 65536 bytes passes.
+- each of the nine steps with a table of input → output; NUL; 65537 bytes → `too-large`; 65536 bytes passes.
 
 Combinator (`psl-parser/test/attribute-spec`):
 - known tag ok; unknown tag → `PSL_UNKNOWN_DEFAULT_LITERAL_TAG` listing tags; non-literal argument → `Expected a tagged literal`.

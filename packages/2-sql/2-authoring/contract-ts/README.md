@@ -61,18 +61,20 @@ Direct imports expose the base structural helpers. Use this surface when you wan
 
 Built-in ID helpers from `@internal/ids` already return the generated-field spec accepted by `field.generated(...)`, so `field.generated(uuidv4())` is a valid structural DSL call.
 
+Storage defaults are values passed to `.default(...)`: a literal, `now()`, `autoincrement()`, or raw SQL written with the `sql` template tag, such as `` .default(sql`gen_random_uuid()`) `` or `` .default(sql`(now() + interval '7 days')`) ``. The `sql` body is canonicalized like PSL's `` @default(sql`...`) `` and used verbatim; JavaScript interpolation is a type error. A body cannot contain `${`, because in a template literal that starts JavaScript interpolation. As in PSL, `` sql`now()` `` and `` sql`autoincrement()` `` are refused with `CONTRACT.DEFAULT_INVALID`: write `.default(now())` or `.default(autoincrement())`. `.defaultSql('...')` still works but is deprecated and is removed in 8.0.0.
+
 ```typescript
 import { textColumn, timestamptzColumn } from '@internal/adapter-postgres/column-types';
 import sqlFamily from '@internal/family-sql/pack';
 import { uuidv4 } from '@internal/ids';
-import { defineContract, field, model, rel } from '@internal/sql-contract-ts/contract-builder';
+import { defineContract, field, model, now, rel } from '@internal/sql-contract-ts/contract-builder';
 import postgresPack from '@internal/target-postgres/pack';
 
 const User = model('User', {
   fields: {
     id: field.generated(uuidv4()).id(),
     email: field.column(textColumn).unique(),
-    createdAt: field.column(timestamptzColumn).defaultSql('now()'),
+    createdAt: field.column(timestamptzColumn).default(now()),
   },
 })
   .relations({

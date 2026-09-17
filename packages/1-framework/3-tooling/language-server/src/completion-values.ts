@@ -132,6 +132,18 @@ function valueItems(
     ];
   }
   if (syntax === 'functionName') return [];
+  if (type.kind === 'taggedLiteral') {
+    return type.tags.map((tag) => ({
+      ...completionItem(
+        input,
+        tag,
+        input.clientSupportsSnippets ? `${tag}\`$1\`` : tag,
+        CompletionItemKind.Value,
+        input.clientSupportsSnippets,
+      ),
+      detail: type.documentation,
+    }));
+  }
   switch (type.kind) {
     case 'identifier':
       return scalarItems(input, [type.name], type.documentation);

@@ -1324,51 +1324,6 @@ namespace auth {
 });
 
 describe('interpretPslDocumentToSqlContract list-field constructs', () => {
-  it('rejects an execution default now() on a list field', () => {
-    expectDiagnosticForSchema(
-      `model Post {
-  id Int @id
-  tags String[] @default(now())
-}
-`,
-      {
-        code: 'PSL_LIST_EXECUTION_DEFAULT_UNSUPPORTED',
-        message:
-          'Field "Post.tags" is a list and cannot use an execution default ("now()"). Lists have no per-element execution-default semantics; use a literal list @default or remove the default.',
-      },
-    );
-  });
-
-  it('rejects an execution default uuid() on a list field', () => {
-    expectDiagnosticForSchema(
-      `model Post {
-  id Int @id
-  tags String[] @default(uuid())
-}
-`,
-      {
-        code: 'PSL_LIST_EXECUTION_DEFAULT_UNSUPPORTED',
-        message:
-          'Field "Post.tags" is a list and cannot use an execution default ("uuid()"). Lists have no per-element execution-default semantics; use a literal list @default or remove the default.',
-      },
-    );
-  });
-
-  it('rejects an execution default autoincrement() on a list field', () => {
-    expectDiagnosticForSchema(
-      `model Post {
-  id Int @id
-  tags Int[] @default(autoincrement())
-}
-`,
-      {
-        code: 'PSL_LIST_EXECUTION_DEFAULT_UNSUPPORTED',
-        message:
-          'Field "Post.tags" is a list and cannot use an execution default ("autoincrement()"). Lists have no per-element execution-default semantics; use a literal list @default or remove the default.',
-      },
-    );
-  });
-
   it('rejects @id on a list field', () => {
     expectDiagnosticForSchema(
       `model Post {
