@@ -20,7 +20,7 @@ changes:
 
 A PSL `model` with no `@@map` used to name its table, or its Mongo collection, after the model with the first letter lowered: `model UserProfile` read and wrote `"userProfile"`. It now uses the model name verbatim, `"UserProfile"`, the same rule every other Prisma 8 authoring surface already followed. Every model without `@@map` therefore points at a table that does not exist yet, so the schema must say which table it means.
 
-Run the colocated codemod once, from the project root, over every schema file, including the `contract.prisma` copy inside each migration directory:
+Run the colocated codemod once, from the extension package root, over every schema file, including the contract-space `contract.prisma` and the copy inside each migration directory:
 
 ```bash
 node scripts/add-model-map.mjs '**/*.prisma'
@@ -30,7 +30,7 @@ It adds `@@map("<model name with its first letter lowered>")` as the last line o
 
 The codemod cannot see storage. It is for schemas written against the previous release only, where every unmapped model's table was created with its first letter lowered. Run it once, before you re-run `contract infer`, and never on a schema that was inferred or written after upgrading: such a schema already names its tables verbatim, and the codemod would point each unmapped model at a lowercase table that does not exist. Read the printed list and remove the `@@map` from any model whose table already has the verbatim name.
 
-Then run the project's emit command (`prisma contract emit`, or its `contract:emit` script) and check that `contract.json` did not change; `prisma db verify --schema-only` against the database must also be clean. An unchanged `contract.json` proves the codemod was run on the right schema: if it changed, or verify reports the lowercase tables as missing, the schema was already verbatim, so revert the codemod's edits. Storage hashes, migration history, and refs are unchanged after a correct run, so no `db sign`, migration, or data move is needed.
+Then run the package's contract-space build (`build:contract-space`, or `prisma contract emit` for the package) and check that the emitted `contract.json` did not change. An unchanged `contract.json` proves the codemod was run on the right schema: if it changed, the schema was already verbatim, so revert the codemod's edits. Storage hashes, migration history, and refs are unchanged after a correct run, so applications composing the extension see no change.
 
 If you plan a migration (`prisma migration plan`, `prisma db update`, `prisma migrate`) without running the codemod, planning fails instead of dropping the table:
 
