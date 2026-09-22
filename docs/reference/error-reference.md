@@ -225,6 +225,10 @@ The SQL emitter is asked to emit an aggregate result row whose declared result c
 
 The control plane resolves a codec referenced by the contract (a `CodecRef.codecId`) against the contract's pack stack and finds no registered codec descriptor for that id. Hit during control-plane operations (emit, migration tooling) when a contract references a codec no composed pack provides. Payload: `codecId`.
 
+### CONTRACT.CAST_REFUSED
+
+A value handed to a data type's cast, or to an authoring entry that reads written text, is not one that type takes: it is not in the shape the source type stores, its magnitude is outside the range the receiving type holds, or the text is not a boolean. Raised by a target's or extension's casts and authoring entries. A contract source reading a column default reports it to the author as the PSL diagnostic `PSL_INVALID_DEFAULT_LITERAL`. Payload: `why`, `fix`.
+
 ### CONTRACT.CHECK_NAME_RESERVED
 
 An authored `@@check` / `check()`'s `name:` prefix matches the shape a derived enforcement check would use for a column of the same table (`<table>_<column>_check` or `<table>_<column>_elem_not_null`), so it cannot be told apart from a derived check once a non-`managed` table strips those. The message and `collidingColumns` meta name the column(s) whose derived-check shape the prefix matches. Raised while building a SQL contract, once the table's real columns are in hand. The fix is to choose a different `name:`. Payload: `tableName`, `prefix`, `collidingColumns`.
@@ -244,6 +248,30 @@ A Mongo model's collection attachment is wrong: the model declares `indexes`, `c
 ### CONTRACT.CONSTRAINT_INVALID
 
 A model declares an empty unique constraint (a unique with no fields), raised during SQL contract lowering (meta: `modelName`). Also raised when a CHECK constraint reaches SQLite migration DDL rendering: the SQLite target does not support CHECK constraints, and `sql.checkConstraint` is a Postgres-only capability. A `@@check` is refused earlier, by the PSL capability gate; a `check()` declared through the TypeScript builder is not, because capabilities reach the contract only after it is built, so this is where a SQLite `check()` is refused (meta: `constraintName`, and `tableName` where available).
+
+### CONTRACT.DATA_TYPE_DUPLICATE
+
+Two components in the composed stack register the same data type id, which has exactly one owner. Raised while assembling the stack's data types. Payload: `dataType`, `contributedBy`, `owner`.
+
+### CONTRACT.DATA_TYPE_ENTRY_DUPLICATE
+
+Two components contribute an authoring entry under the same key, so the stack cannot tell which one reads that data type's written form. Raised while merging authoring contributions. Payload: `key`, `contributedBy`, `owner`.
+
+### CONTRACT.DATA_TYPE_ID_INVALID
+
+A string given where a data type id belongs is not `owner/name` in lower case, or carries a version (a versioned id names a codec, not a data type). Raised by `dataTypeId()` while declaring a data type or a cast. Payload: `id`.
+
+### CONTRACT.DATA_TYPE_NOT_WRITABLE
+
+A data type declares a cast from a type no contract source can write, so the cast could never be exercised. Raised while checking the assembled data types. Payload: `dataType`, `source`, `contributedBy`.
+
+### CONTRACT.DATA_TYPE_UNREGISTERED
+
+Something names a data type that no component in the stack registers: a codec's `dataType`, an authoring entry's key, a type its number classifier returns, or a type a cast takes values of. Raised while checking the assembled data types. Payload: `dataType`, `contributedBy`.
+
+### CONTRACT.DATA_TYPE_WRITTEN_FORM_DUPLICATE
+
+Two authoring entries claim the same written form — the same literal tag, or the same plain string, boolean, or number syntax — so a written default would have two readers. Raised while checking the assembled data types. Payload: `claim`, `key`, `contributedBy`, `owner`, `ownerContributedBy`.
 
 ### CONTRACT.DEFAULT_INVALID
 
@@ -304,6 +332,10 @@ A Mongo variant model declares an index that conflicts with the discriminator sc
 ### CONTRACT.INTROSPECTION_UNSUPPORTED
 
 Introspection read an unrecognized or malformed database shape: an unknown referential action rule, or a malformed index reloption entry. Raised by the Postgres and SQLite control adapters. Payload: `rule`, `entry`, `indexName`.
+
+### CONTRACT.INVALID_JSON_LITERAL
+
+The body of a JSON default is not a JSON document, or holds a number outside the range a JSON number holds (`JSON.parse` reads such a numeral as `Infinity`, which `JSON.stringify` writes back as `null`). Raised while canonicalizing a JSON default body. Contract sources report it to the author as the PSL diagnostic `PSL_INVALID_JSON_LITERAL`. Payload: `why`, `fix`.
 
 ### CONTRACT.MARKER_MISMATCH
 
@@ -541,7 +573,7 @@ An attribute Prisma 7 for the target does not have, or one the source does not r
 
 ### PSL.PRISMA7_UNKNOWN_DEFAULT
 
-A `@default` value the source cannot read: an unknown function, an enum member on a non-enum field or a non-member, a number with a fraction on an `Int` or `BigInt` field, a malformed JSON or base64 literal, or `dbgenerated()` with no expression on a required field. Use a literal, an enum member, or a supported function. Reported by the Prisma 7 contract source (`prisma7Schema`) during `contract emit`, as a finding in the `diagnostics` list of `CONTRACT.SOURCE_LOAD_FAILED`, never on its own. `summary` is `<file>:<line>:<column> <message>`, with only the file when there is no position (the terminal prints the code before it), and `where` carries `path` and, when known, `line`. Payload: none.
+A `@default` value the source cannot read, or one the column's data type or codec refuses. The message is `Field "<Model>.<field>": @default <reason>`. Every reason below carries ` at element <n>` after the value it is about when that value is one element of a list. The reasons that come from reading the value are: `holds text that this contract source does not read: <the reading entry's message>`; `holds a <tag> literal, which this stack does not register.`; `holds a <string|boolean|number> value, which this target has no data type for.`; `holds a <value type> value, which <column type> has no cast from; it casts from <types>.` (or `it casts from nothing`); and `holds a value that <codecId> does not read: <the codec's message>`. The rest do not involve the value's type — an unknown function, an enum member on a non-enum field or a non-member, and `dbgenerated()` with no expression on a required field. Write a value of a type the column's type is or casts from, an enum member, or a supported function. Reported by the Prisma 7 contract source (`prisma7Schema`) during `contract emit`, as a finding in the `diagnostics` list of `CONTRACT.SOURCE_LOAD_FAILED`, never on its own. `summary` is `<file>:<line>:<column> <message>`, with only the file when there is no position (the terminal prints the code before it), and `where` carries `path` and, when known, `line`. Payload: none.
 
 ### PSL.PRISMA7_UNSUPPORTED_TYPE
 
@@ -566,6 +598,22 @@ A backtick string appears somewhere other than after a tag, for example `` @map(
 ### PSL_UNKNOWN_DEFAULT_LITERAL_TAG
 
 A `@default` tagged literal uses a tag no pack in the stack registered: `Unknown literal tag "<tag>". Known tags: <tags in registration order>.` Every SQL target registers `sql`; Postgres also registers `pg.sql` and SQLite `sqlite.sql`. Reported at the literal when the default is lowered.
+
+### PSL_DEFAULT_TYPE_INCOMPATIBLE
+
+A written `@default` value has a data type the column's type neither is nor casts from: `Field "<Model>.<field>": <column type> has no cast from <value type>; it casts from <types>`, or `; it casts from nothing` when the column's type declares no cast at all. A written value has a data type of its own — a number's comes from its own size and precision, so on Postgres `42` is `pg/int2` and `100000000000000099` is `pg/int8` — and a data type declares which other types' values it takes. Inside a written list the message names the element: `Field "<Model>.<field>" at element 2: ...`.
+
+The same code reports a written form this target has no data type for at all: `Field "<Model>.<field>"[ at element <n>]: this target has no data type for a <string|boolean|number> value` — `true` on SQLite, for instance, which registers no boolean entry.
+
+Reported at the `@default` attribute. See [ADR 254](../architecture%20docs/adrs/ADR%20254%20-%20Data%20types%20and%20casts.md).
+
+### PSL_INVALID_DEFAULT_LITERAL
+
+A written `@default` value that whatever read it refused: the authoring entry's parse, a cast, or the column's codec. A `pgvector.Vector(3)` column given two elements, a magnitude no double holds written on a `Float` column, a body a tag's parse cannot read, or a number no data type of the target holds — `no data type of this target holds the number <text>`, which is how SQLite refuses a whole number past 64 bits. The message is `Field "<Model>.<field>": <the message of whatever refused it>`, with ` at element <n>` after the field path when it is one element of a written list. Reported at the `@default` attribute. See [ADR 254](../architecture%20docs/adrs/ADR%20254%20-%20Data%20types%20and%20casts.md).
+
+### PSL_INVALID_JSON_LITERAL
+
+A `` @default(json`...`) `` body is not a JSON document: `Field "<Model>.<field>": <the JSON parser's message>`, with ` at element <n>` after the field path when it is one element of a written list. It is `PSL_INVALID_DEFAULT_LITERAL` narrowed to the one case of a `json` body, so that a malformed document is distinguishable from a value a cast or a codec refused. Reported at the `@default` attribute.
 
 ### PSL_TAGGED_LITERAL_NUL
 
