@@ -379,7 +379,7 @@ A native type name in the contract fails the identifier-safety pattern required 
 
 ### CONTRACT.PACK_CONTRIBUTION_INVALID
 
-A composed pack's contribution is malformed or collides with another contribution; this is the extension-author-facing bucket. Covers: entity types colliding with reserved helper keys, duplicate entity kinds or index-type registrations, a registered entity kind with no `lowerEntityHandles` lowering, an invalid `indexTypes` shape, entries-slot collisions between a model attribute and a block entry kind, bad authoring-helper paths, a codec registered with an entity-ref arg but no `columnFromEntity` hook, and print-time contribution mismatches (missing/mismatched PSL block descriptor, param descriptor kind disagreeing with the AST node, unregistered codec id, raw literal that is not valid JSON). Raised during contract authoring/lowering and PSL printing. Payload: `packId`, `contribution`, `reason`, `keyword`, `paramName`, `codecId`.
+A composed pack's contribution is malformed or collides with another contribution; this is the extension-author-facing bucket. Covers: entity types colliding with reserved helper keys, duplicate entity kinds or index-type registrations, a registered entity kind with no `lowerEntityHandles` lowering, an invalid `indexTypes` shape, entries-slot collisions between a model attribute and a block entry kind, a model attribute that lowers to a malformed index, bad authoring-helper paths, a codec registered with an entity-ref arg but no `columnFromEntity` hook, and print-time contribution mismatches (missing/mismatched PSL block descriptor, param descriptor kind disagreeing with the AST node, unregistered codec id, raw literal that is not valid JSON). Raised during contract authoring/lowering and PSL printing. Payload: `packId`, `contribution`, `reason`, `keyword`, `paramName`, `codecId`.
 
 ### CONTRACT.PACK_FAMILY_MISMATCH
 
@@ -722,6 +722,10 @@ Two trait-matching aggregate descriptors for one operation both claim a register
 ### RUNTIME.ANNOTATION_INAPPLICABLE
 
 A lane terminal (SQL DSL `.build()`, ORM collection terminal) received an annotation whose declared `applicableTo` set does not include the operation kind being built: the runtime check that backs up the type-level annotation validation when it is bypassed via casts or dynamic invocation. Payload: `namespace`, `terminalName`, `kind`, `applicableTo`.
+
+### RUNTIME.ARGUMENT_INVALID
+
+A built-in Postgres query operation received an argument it cannot use. Today the only such argument is the `language` of `fullTextMatches`, `fullTextRank` and `fullTextHeadline`: the language is written into the SQL as an inline literal rather than a bound parameter, so it is checked against the text-search configurations a stock PostgreSQL server ships with and anything else is refused. Raised while the query is being built, before any SQL reaches the database. Payload: `helper`, `argument`, `received`.
 
 ### RUNTIME.AST_INVALID
 
