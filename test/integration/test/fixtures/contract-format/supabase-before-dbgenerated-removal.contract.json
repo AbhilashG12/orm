@@ -273,12 +273,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -435,12 +431,8 @@
               "mfaAmrClaims": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "sessionId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["sessionId"]
                 },
                 "to": {
                   "model": "MfaAmrClaims",
@@ -451,12 +443,8 @@
                 "cardinality": "N:1",
                 "nullable": true,
                 "on": {
-                  "localFields": [
-                    "oauthClientId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["oauthClientId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "OauthClients",
@@ -466,12 +454,8 @@
               "refreshTokens": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "sessionId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["sessionId"]
                 },
                 "to": {
                   "model": "RefreshTokens",
@@ -482,12 +466,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -799,12 +779,8 @@
               "identities": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "AuthIdentity",
@@ -814,12 +790,8 @@
               "mfaFactors": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "MfaFactors",
@@ -829,12 +801,8 @@
               "oauthAuthorizations": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "OauthAuthorizations",
@@ -844,12 +812,8 @@
               "oauthConsents": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "OauthConsents",
@@ -859,12 +823,8 @@
               "oneTimeTokens": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "OneTimeTokens",
@@ -874,12 +834,8 @@
               "sessions": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "AuthSession",
@@ -889,12 +845,8 @@
               "webauthnChallenges": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "WebauthnChallenges",
@@ -904,12 +856,8 @@
               "webauthnCredentials": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "userId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["userId"]
                 },
                 "to": {
                   "model": "WebauthnCredentials",
@@ -1411,12 +1359,8 @@
               "samlRelayStates": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "flowStateId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["flowStateId"]
                 },
                 "to": {
                   "model": "SamlRelayStates",
@@ -1586,12 +1530,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "sessionId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["sessionId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthSession",
@@ -1678,12 +1618,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "factorId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["factorId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "MfaFactors",
@@ -1823,12 +1759,8 @@
               "mfaChallenges": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "factorId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["factorId"]
                 },
                 "to": {
                   "model": "MfaChallenges",
@@ -1839,12 +1771,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -2034,12 +1962,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "clientId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["clientId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "OauthClients",
@@ -2050,12 +1974,8 @@
                 "cardinality": "N:1",
                 "nullable": true,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -2276,12 +2196,8 @@
               "oauthAuthorizations": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "clientId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["clientId"]
                 },
                 "to": {
                   "model": "OauthAuthorizations",
@@ -2291,12 +2207,8 @@
               "oauthConsents": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "clientId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["clientId"]
                 },
                 "to": {
                   "model": "OauthConsents",
@@ -2306,12 +2218,8 @@
               "sessions": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "oauthClientId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["oauthClientId"]
                 },
                 "to": {
                   "model": "AuthSession",
@@ -2415,12 +2323,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "clientId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["clientId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "OauthClients",
@@ -2431,12 +2335,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -2529,12 +2429,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -2641,12 +2537,8 @@
                 "cardinality": "N:1",
                 "nullable": true,
                 "on": {
-                  "localFields": [
-                    "sessionId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["sessionId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthSession",
@@ -2759,12 +2651,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "ssoProviderId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["ssoProviderId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "SsoProviders",
@@ -2870,12 +2758,8 @@
                 "cardinality": "N:1",
                 "nullable": true,
                 "on": {
-                  "localFields": [
-                    "flowStateId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["flowStateId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "FlowState",
@@ -2886,12 +2770,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "ssoProviderId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["ssoProviderId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "SsoProviders",
@@ -2994,12 +2874,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "ssoProviderId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["ssoProviderId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "SsoProviders",
@@ -3071,12 +2947,8 @@
               "samlProviders": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "ssoProviderId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["ssoProviderId"]
                 },
                 "to": {
                   "model": "SamlProviders",
@@ -3086,12 +2958,8 @@
               "samlRelayStates": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "ssoProviderId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["ssoProviderId"]
                 },
                 "to": {
                   "model": "SamlRelayStates",
@@ -3101,12 +2969,8 @@
               "ssoDomains": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "ssoProviderId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["ssoProviderId"]
                 },
                 "to": {
                   "model": "SsoDomains",
@@ -3186,12 +3050,8 @@
                 "cardinality": "N:1",
                 "nullable": true,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -3330,12 +3190,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "userId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["userId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "AuthUser",
@@ -3455,12 +3311,8 @@
               "icebergNamespaces": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "catalogId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["catalogId"]
                 },
                 "to": {
                   "model": "IcebergNamespaces",
@@ -3470,12 +3322,8 @@
               "icebergTables": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "catalogId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["catalogId"]
                 },
                 "to": {
                   "model": "IcebergTables",
@@ -3549,12 +3397,8 @@
               "vectorIndexes": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "bucketId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["bucketId"]
                 },
                 "to": {
                   "model": "VectorIndexes",
@@ -3638,12 +3482,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "catalogId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["catalogId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "BucketsAnalytics",
@@ -3653,12 +3493,8 @@
               "icebergTables": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "namespaceId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["namespaceId"]
                 },
                 "to": {
                   "model": "IcebergTables",
@@ -3779,12 +3615,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "catalogId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["catalogId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "BucketsAnalytics",
@@ -3795,12 +3627,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "namespaceId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["namespaceId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "IcebergNamespaces",
@@ -3977,12 +3805,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "bucketId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["bucketId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "StorageBucket",
@@ -3992,12 +3816,8 @@
               "s3MultipartUploadsParts": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "uploadId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["uploadId"]
                 },
                 "to": {
                   "model": "S3MultipartUploadsParts",
@@ -4120,12 +3940,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "bucketId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["bucketId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "StorageBucket",
@@ -4136,12 +3952,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "uploadId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["uploadId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "S3MultipartUploads",
@@ -4274,12 +4086,8 @@
               "objects": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "bucketId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["bucketId"]
                 },
                 "to": {
                   "model": "StorageObject",
@@ -4289,12 +4097,8 @@
               "s3MultipartUploads": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "bucketId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["bucketId"]
                 },
                 "to": {
                   "model": "S3MultipartUploads",
@@ -4304,12 +4108,8 @@
               "s3MultipartUploadsParts": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "id"
-                  ],
-                  "targetFields": [
-                    "bucketId"
-                  ]
+                  "localFields": ["id"],
+                  "targetFields": ["bucketId"]
                 },
                 "to": {
                   "model": "S3MultipartUploadsParts",
@@ -4450,12 +4250,8 @@
                 "cardinality": "N:1",
                 "nullable": true,
                 "on": {
-                  "localFields": [
-                    "bucketId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["bucketId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "StorageBucket",
@@ -4577,12 +4373,8 @@
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
-                  "localFields": [
-                    "bucketId"
-                  ],
-                  "targetFields": [
-                    "id"
-                  ]
+                  "localFields": ["bucketId"],
+                  "targetFields": ["id"]
                 },
                 "to": {
                   "model": "BucketsVectors",
@@ -4662,69 +4454,42 @@
           "native_enum": {
             "aal_level": {
               "kind": "postgres-enum",
-              "members": [
-                "aal1",
-                "aal2",
-                "aal3"
-              ],
+              "members": ["aal1", "aal2", "aal3"],
               "typeName": "aal_level"
             },
             "code_challenge_method": {
               "kind": "postgres-enum",
-              "members": [
-                "s256",
-                "plain"
-              ],
+              "members": ["s256", "plain"],
               "typeName": "code_challenge_method"
             },
             "factor_status": {
               "kind": "postgres-enum",
-              "members": [
-                "unverified",
-                "verified"
-              ],
+              "members": ["unverified", "verified"],
               "typeName": "factor_status"
             },
             "factor_type": {
               "kind": "postgres-enum",
-              "members": [
-                "totp",
-                "webauthn",
-                "phone"
-              ],
+              "members": ["totp", "webauthn", "phone"],
               "typeName": "factor_type"
             },
             "oauth_authorization_status": {
               "kind": "postgres-enum",
-              "members": [
-                "pending",
-                "approved",
-                "denied",
-                "expired"
-              ],
+              "members": ["pending", "approved", "denied", "expired"],
               "typeName": "oauth_authorization_status"
             },
             "oauth_client_type": {
               "kind": "postgres-enum",
-              "members": [
-                "public",
-                "confidential"
-              ],
+              "members": ["public", "confidential"],
               "typeName": "oauth_client_type"
             },
             "oauth_registration_type": {
               "kind": "postgres-enum",
-              "members": [
-                "dynamic",
-                "manual"
-              ],
+              "members": ["dynamic", "manual"],
               "typeName": "oauth_registration_type"
             },
             "oauth_response_type": {
               "kind": "postgres-enum",
-              "members": [
-                "code"
-              ],
+              "members": ["code"],
               "typeName": "oauth_response_type"
             },
             "one_time_token_type": {
@@ -4862,17 +4627,13 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "instance_id"
-                  ],
+                  "columns": ["instance_id"],
                   "name": "audit_logs_instance_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "audit_log_entries_pkey"
               },
               "uniques": []
@@ -4961,16 +4722,14 @@
                   },
                   "many": true,
                   "nativeType": "text",
-                  "noCheck": [
-                    "elementNotNull"
-                  ],
+                  "noCheck": ["elementNotNull"],
                   "nullable": false
                 },
                 "attribute_mapping": {
                   "codecId": "pg/jsonb@1",
                   "default": {
-                    "kind": "literal",
-                    "value": {}
+                    "expression": "'{}'::jsonb",
+                    "kind": "function"
                   },
                   "nativeType": "jsonb",
                   "nullable": false
@@ -4978,8 +4737,8 @@
                 "authorization_params": {
                   "codecId": "pg/jsonb@1",
                   "default": {
-                    "kind": "literal",
-                    "value": {}
+                    "expression": "'{}'::jsonb",
+                    "kind": "function"
                   },
                   "nativeType": "jsonb",
                   "nullable": false
@@ -5093,9 +4852,7 @@
                   },
                   "many": true,
                   "nativeType": "text",
-                  "noCheck": [
-                    "elementNotNull"
-                  ],
+                  "noCheck": ["elementNotNull"],
                   "nullable": false
                 },
                 "skip_nonce_check": {
@@ -5130,45 +4887,33 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "created_at"
-                  ],
+                  "columns": ["created_at"],
                   "name": "custom_oauth_providers_created_at_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "enabled"
-                  ],
+                  "columns": ["enabled"],
                   "name": "custom_oauth_providers_enabled_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "identifier"
-                  ],
+                  "columns": ["identifier"],
                   "name": "custom_oauth_providers_identifier_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "provider_type"
-                  ],
+                  "columns": ["provider_type"],
                   "name": "custom_oauth_providers_provider_type_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "custom_oauth_providers_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "identifier"
-                  ],
+                  "columns": ["identifier"],
                   "name": "custom_oauth_providers_identifier_key"
                 }
               ]
@@ -5281,32 +5026,23 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "created_at"
-                  ],
+                  "columns": ["created_at"],
                   "name": "flow_state_created_at_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "auth_code"
-                  ],
+                  "columns": ["auth_code"],
                   "name": "idx_auth_code",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id",
-                    "authentication_method"
-                  ],
+                  "columns": ["user_id", "authentication_method"],
                   "name": "idx_user_id_auth_method",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "flow_state_pkey"
               },
               "uniques": []
@@ -5370,16 +5106,12 @@
                   "name": "identities_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "identities"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -5387,32 +5119,23 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "email"
-                  ],
+                  "columns": ["email"],
                   "name": "identities_email_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id"
-                  ],
+                  "columns": ["user_id"],
                   "name": "identities_user_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "identities_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "provider_id",
-                    "provider"
-                  ],
+                  "columns": ["provider_id", "provider"],
                   "name": "identities_provider_id_provider_unique"
                 }
               ]
@@ -5450,9 +5173,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "instances_pkey"
               },
               "uniques": []
@@ -5492,16 +5213,12 @@
                   "name": "mfa_amr_claims_session_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "session_id"
-                    ],
+                    "columns": ["session_id"],
                     "namespaceId": "auth",
                     "tableName": "mfa_amr_claims"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "sessions"
                   }
@@ -5509,17 +5226,12 @@
               ],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "amr_id_pk"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "session_id",
-                    "authentication_method"
-                  ],
+                  "columns": ["session_id", "authentication_method"],
                   "name": "mfa_amr_claims_session_id_authentication_method_pkey"
                 }
               ]
@@ -5570,16 +5282,12 @@
                   "name": "mfa_challenges_auth_factor_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "factor_id"
-                    ],
+                    "columns": ["factor_id"],
                     "namespaceId": "auth",
                     "tableName": "mfa_challenges"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "mfa_factors"
                   }
@@ -5587,17 +5295,13 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "created_at"
-                  ],
+                  "columns": ["created_at"],
                   "name": "mfa_challenge_created_at_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "mfa_challenges_pkey"
               },
               "uniques": []
@@ -5696,16 +5400,12 @@
                   "name": "mfa_factors_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "mfa_factors"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -5713,49 +5413,34 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "user_id",
-                    "created_at"
-                  ],
+                  "columns": ["user_id", "created_at"],
                   "name": "factor_id_created_at_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "friendly_name",
-                    "user_id"
-                  ],
+                  "columns": ["friendly_name", "user_id"],
                   "name": "mfa_factors_user_friendly_name_unique",
                   "unique": true,
                   "where": "(TRIM(BOTH FROM friendly_name) <> ''::text)"
                 },
                 {
-                  "columns": [
-                    "user_id"
-                  ],
+                  "columns": ["user_id"],
                   "name": "mfa_factors_user_id_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id",
-                    "phone"
-                  ],
+                  "columns": ["user_id", "phone"],
                   "name": "unique_phone_factor_per_user",
                   "unique": true
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "mfa_factors_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "last_challenged_at"
-                  ],
+                  "columns": ["last_challenged_at"],
                   "name": "mfa_factors_last_challenged_at_key"
                 }
               ]
@@ -5933,16 +5618,12 @@
                   "name": "oauth_authorizations_client_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "client_id"
-                    ],
+                    "columns": ["client_id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_authorizations"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_clients"
                   }
@@ -5951,16 +5632,12 @@
                   "name": "oauth_authorizations_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_authorizations"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -5968,31 +5645,23 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "expires_at"
-                  ],
+                  "columns": ["expires_at"],
                   "name": "oauth_auth_pending_exp_idx",
                   "unique": false,
                   "where": "(status = 'pending'::auth.oauth_authorization_status)"
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "oauth_authorizations_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "authorization_code"
-                  ],
+                  "columns": ["authorization_code"],
                   "name": "oauth_authorizations_authorization_code_key"
                 },
                 {
-                  "columns": [
-                    "authorization_id"
-                  ],
+                  "columns": ["authorization_id"],
                   "name": "oauth_authorizations_authorization_id_key"
                 }
               ]
@@ -6024,17 +5693,13 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "created_at"
-                  ],
+                  "columns": ["created_at"],
                   "name": "idx_oauth_client_states_created_at",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "oauth_client_states_pkey"
               },
               "uniques": []
@@ -6159,17 +5824,13 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "deleted_at"
-                  ],
+                  "columns": ["deleted_at"],
                   "name": "oauth_clients_deleted_at_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "oauth_clients_pkey"
               },
               "uniques": []
@@ -6233,16 +5894,12 @@
                   "name": "oauth_consents_client_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "client_id"
-                    ],
+                    "columns": ["client_id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_consents"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_clients"
                   }
@@ -6251,16 +5908,12 @@
                   "name": "oauth_consents_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_consents"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -6268,43 +5921,30 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "client_id"
-                  ],
+                  "columns": ["client_id"],
                   "name": "oauth_consents_active_client_idx",
                   "unique": false,
                   "where": "(revoked_at IS NULL)"
                 },
                 {
-                  "columns": [
-                    "user_id",
-                    "client_id"
-                  ],
+                  "columns": ["user_id", "client_id"],
                   "name": "oauth_consents_active_user_client_idx",
                   "unique": false,
                   "where": "(revoked_at IS NULL)"
                 },
                 {
-                  "columns": [
-                    "user_id",
-                    "granted_at"
-                  ],
+                  "columns": ["user_id", "granted_at"],
                   "name": "oauth_consents_user_order_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "oauth_consents_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "user_id",
-                    "client_id"
-                  ],
+                  "columns": ["user_id", "client_id"],
                   "name": "oauth_consents_user_client_unique"
                 }
               ]
@@ -6379,16 +6019,12 @@
                   "name": "one_time_tokens_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "one_time_tokens"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -6396,34 +6032,25 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "relates_to"
-                  ],
+                  "columns": ["relates_to"],
                   "name": "one_time_tokens_relates_to_hash_idx",
                   "type": "hash",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "token_hash"
-                  ],
+                  "columns": ["token_hash"],
                   "name": "one_time_tokens_token_hash_hash_idx",
                   "type": "hash",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id",
-                    "token_type"
-                  ],
+                  "columns": ["user_id", "token_type"],
                   "name": "one_time_tokens_user_id_token_type_key",
                   "unique": true
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "one_time_tokens_pkey"
               },
               "uniques": []
@@ -6490,16 +6117,12 @@
                   "name": "refresh_tokens_session_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "session_id"
-                    ],
+                    "columns": ["session_id"],
                     "namespaceId": "auth",
                     "tableName": "refresh_tokens"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "sessions"
                   }
@@ -6507,54 +6130,38 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "instance_id"
-                  ],
+                  "columns": ["instance_id"],
                   "name": "refresh_tokens_instance_id_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "instance_id",
-                    "user_id"
-                  ],
+                  "columns": ["instance_id", "user_id"],
                   "name": "refresh_tokens_instance_id_user_id_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "parent"
-                  ],
+                  "columns": ["parent"],
                   "name": "refresh_tokens_parent_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "session_id",
-                    "revoked"
-                  ],
+                  "columns": ["session_id", "revoked"],
                   "name": "refresh_tokens_session_id_revoked_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "updated_at"
-                  ],
+                  "columns": ["updated_at"],
                   "name": "refresh_tokens_updated_at_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "refresh_tokens_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "token"
-                  ],
+                  "columns": ["token"],
                   "name": "refresh_tokens_token_unique"
                 }
               ]
@@ -6628,16 +6235,12 @@
                   "name": "saml_providers_sso_provider_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "sso_provider_id"
-                    ],
+                    "columns": ["sso_provider_id"],
                     "namespaceId": "auth",
                     "tableName": "saml_providers"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "sso_providers"
                   }
@@ -6645,24 +6248,18 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "sso_provider_id"
-                  ],
+                  "columns": ["sso_provider_id"],
                   "name": "saml_providers_sso_provider_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "saml_providers_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "entity_id"
-                  ],
+                  "columns": ["entity_id"],
                   "name": "saml_providers_entity_id_key"
                 }
               ]
@@ -6724,16 +6321,12 @@
                   "name": "saml_relay_states_flow_state_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "flow_state_id"
-                    ],
+                    "columns": ["flow_state_id"],
                     "namespaceId": "auth",
                     "tableName": "saml_relay_states"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "flow_state"
                   }
@@ -6742,16 +6335,12 @@
                   "name": "saml_relay_states_sso_provider_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "sso_provider_id"
-                    ],
+                    "columns": ["sso_provider_id"],
                     "namespaceId": "auth",
                     "tableName": "saml_relay_states"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "sso_providers"
                   }
@@ -6759,31 +6348,23 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "created_at"
-                  ],
+                  "columns": ["created_at"],
                   "name": "saml_relay_states_created_at_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "for_email"
-                  ],
+                  "columns": ["for_email"],
                   "name": "saml_relay_states_for_email_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "sso_provider_id"
-                  ],
+                  "columns": ["sso_provider_id"],
                   "name": "saml_relay_states_sso_provider_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "saml_relay_states_pkey"
               },
               "uniques": []
@@ -6800,9 +6381,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "version"
-                ],
+                "columns": ["version"],
                 "name": "schema_migrations_pkey"
               },
               "uniques": []
@@ -6911,16 +6490,12 @@
                   "name": "sessions_oauth_client_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "oauth_client_id"
-                    ],
+                    "columns": ["oauth_client_id"],
                     "namespaceId": "auth",
                     "tableName": "sessions"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "oauth_clients"
                   }
@@ -6929,16 +6504,12 @@
                   "name": "sessions_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "sessions"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -6946,39 +6517,28 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "not_after"
-                  ],
+                  "columns": ["not_after"],
                   "name": "sessions_not_after_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "oauth_client_id"
-                  ],
+                  "columns": ["oauth_client_id"],
                   "name": "sessions_oauth_client_id_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id"
-                  ],
+                  "columns": ["user_id"],
                   "name": "sessions_user_id_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id",
-                    "created_at"
-                  ],
+                  "columns": ["user_id", "created_at"],
                   "name": "user_id_created_at_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "sessions_pkey"
               },
               "uniques": []
@@ -7024,16 +6584,12 @@
                   "name": "sso_domains_sso_provider_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "sso_provider_id"
-                    ],
+                    "columns": ["sso_provider_id"],
                     "namespaceId": "auth",
                     "tableName": "sso_domains"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "sso_providers"
                   }
@@ -7046,17 +6602,13 @@
                   "unique": true
                 },
                 {
-                  "columns": [
-                    "sso_provider_id"
-                  ],
+                  "columns": ["sso_provider_id"],
                   "name": "sso_domains_sso_provider_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "sso_domains_pkey"
               },
               "uniques": []
@@ -7104,17 +6656,13 @@
                   "unique": true
                 },
                 {
-                  "columns": [
-                    "resource_id"
-                  ],
+                  "columns": ["resource_id"],
                   "name": "sso_providers_resource_id_pattern_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "sso_providers_pkey"
               },
               "uniques": []
@@ -7348,49 +6896,37 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "confirmation_token"
-                  ],
+                  "columns": ["confirmation_token"],
                   "name": "confirmation_token_idx",
                   "unique": true,
                   "where": "((confirmation_token)::text !~ '^[0-9 ]*$'::text)"
                 },
                 {
-                  "columns": [
-                    "email_change_token_current"
-                  ],
+                  "columns": ["email_change_token_current"],
                   "name": "email_change_token_current_idx",
                   "unique": true,
                   "where": "((email_change_token_current)::text !~ '^[0-9 ]*$'::text)"
                 },
                 {
-                  "columns": [
-                    "email_change_token_new"
-                  ],
+                  "columns": ["email_change_token_new"],
                   "name": "email_change_token_new_idx",
                   "unique": true,
                   "where": "((email_change_token_new)::text !~ '^[0-9 ]*$'::text)"
                 },
                 {
-                  "columns": [
-                    "reauthentication_token"
-                  ],
+                  "columns": ["reauthentication_token"],
                   "name": "reauthentication_token_idx",
                   "unique": true,
                   "where": "((reauthentication_token)::text !~ '^[0-9 ]*$'::text)"
                 },
                 {
-                  "columns": [
-                    "recovery_token"
-                  ],
+                  "columns": ["recovery_token"],
                   "name": "recovery_token_idx",
                   "unique": true,
                   "where": "((recovery_token)::text !~ '^[0-9 ]*$'::text)"
                 },
                 {
-                  "columns": [
-                    "email"
-                  ],
+                  "columns": ["email"],
                   "name": "users_email_partial_key",
                   "unique": true,
                   "where": "(is_sso_user = false)"
@@ -7401,31 +6937,23 @@
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "instance_id"
-                  ],
+                  "columns": ["instance_id"],
                   "name": "users_instance_id_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "is_anonymous"
-                  ],
+                  "columns": ["is_anonymous"],
                   "name": "users_is_anonymous_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "users_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "phone"
-                  ],
+                  "columns": ["phone"],
                   "name": "users_phone_key"
                 }
               ]
@@ -7484,16 +7012,12 @@
                   "name": "webauthn_challenges_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "webauthn_challenges"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -7501,24 +7025,18 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "expires_at"
-                  ],
+                  "columns": ["expires_at"],
                   "name": "webauthn_challenges_expires_at_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "user_id"
-                  ],
+                  "columns": ["user_id"],
                   "name": "webauthn_challenges_user_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "webauthn_challenges_pkey"
               },
               "uniques": []
@@ -7613,8 +7131,8 @@
                 "transports": {
                   "codecId": "pg/jsonb@1",
                   "default": {
-                    "kind": "literal",
-                    "value": []
+                    "expression": "'[]'::jsonb",
+                    "kind": "function"
                   },
                   "nativeType": "jsonb",
                   "nullable": false
@@ -7640,16 +7158,12 @@
                   "name": "webauthn_credentials_user_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "user_id"
-                    ],
+                    "columns": ["user_id"],
                     "namespaceId": "auth",
                     "tableName": "webauthn_credentials"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "auth",
                     "tableName": "users"
                   }
@@ -7657,24 +7171,18 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "credential_id"
-                  ],
+                  "columns": ["credential_id"],
                   "name": "webauthn_credentials_credential_id_key",
                   "unique": true
                 },
                 {
-                  "columns": [
-                    "user_id"
-                  ],
+                  "columns": ["user_id"],
                   "name": "webauthn_credentials_user_id_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "webauthn_credentials_pkey"
               },
               "uniques": []
@@ -7683,62 +7191,35 @@
           "valueSet": {
             "AalLevel": {
               "kind": "valueSet",
-              "values": [
-                "aal1",
-                "aal2",
-                "aal3"
-              ]
+              "values": ["aal1", "aal2", "aal3"]
             },
             "CodeChallengeMethod": {
               "kind": "valueSet",
-              "values": [
-                "s256",
-                "plain"
-              ]
+              "values": ["s256", "plain"]
             },
             "FactorStatus": {
               "kind": "valueSet",
-              "values": [
-                "unverified",
-                "verified"
-              ]
+              "values": ["unverified", "verified"]
             },
             "FactorType": {
               "kind": "valueSet",
-              "values": [
-                "totp",
-                "webauthn",
-                "phone"
-              ]
+              "values": ["totp", "webauthn", "phone"]
             },
             "OauthAuthorizationStatus": {
               "kind": "valueSet",
-              "values": [
-                "pending",
-                "approved",
-                "denied",
-                "expired"
-              ]
+              "values": ["pending", "approved", "denied", "expired"]
             },
             "OauthClientType": {
               "kind": "valueSet",
-              "values": [
-                "public",
-                "confidential"
-              ]
+              "values": ["public", "confidential"]
             },
             "OauthRegistrationType": {
               "kind": "valueSet",
-              "values": [
-                "dynamic",
-                "manual"
-              ]
+              "values": ["dynamic", "manual"]
             },
             "OauthResponseType": {
               "kind": "valueSet",
-              "values": [
-                "code"
-              ]
+              "values": ["code"]
             },
             "OneTimeTokenType": {
               "kind": "valueSet",
@@ -7768,11 +7249,7 @@
           "native_enum": {
             "buckettype": {
               "kind": "postgres-enum",
-              "members": [
-                "STANDARD",
-                "ANALYTICS",
-                "VECTOR"
-              ],
+              "members": ["STANDARD", "ANALYTICS", "VECTOR"],
               "typeName": "buckettype"
             }
           },
@@ -7835,9 +7312,7 @@
                   "codecId": "pg/text@1",
                   "many": true,
                   "nativeType": "text",
-                  "noCheck": [
-                    "elementNotNull"
-                  ],
+                  "noCheck": ["elementNotNull"],
                   "nullable": true
                 },
                 "avif_autodetection": {
@@ -7924,17 +7399,13 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "name"
-                  ],
+                  "columns": ["name"],
                   "name": "bname",
                   "unique": true
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "buckets_pkey"
               },
               "uniques": []
@@ -8010,18 +7481,14 @@
               "foreignKeys": [],
               "indexes": [
                 {
-                  "columns": [
-                    "name"
-                  ],
+                  "columns": ["name"],
                   "name": "buckets_analytics_unique_name_idx",
                   "unique": true,
                   "where": "(deleted_at IS NULL)"
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "buckets_analytics_pkey"
               },
               "uniques": []
@@ -8073,9 +7540,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "buckets_vectors_pkey"
               },
               "uniques": []
@@ -8115,8 +7580,8 @@
                 "metadata": {
                   "codecId": "pg/jsonb@1",
                   "default": {
-                    "kind": "literal",
-                    "value": {}
+                    "expression": "'{}'::jsonb",
+                    "kind": "function"
                   },
                   "nativeType": "jsonb",
                   "nullable": false
@@ -8141,16 +7606,12 @@
                   "name": "iceberg_namespaces_catalog_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "catalog_id"
-                    ],
+                    "columns": ["catalog_id"],
                     "namespaceId": "storage",
                     "tableName": "iceberg_namespaces"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "buckets_analytics"
                   }
@@ -8158,18 +7619,13 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "catalog_id",
-                    "name"
-                  ],
+                  "columns": ["catalog_id", "name"],
                   "name": "idx_iceberg_namespaces_bucket_id",
                   "unique": true
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "iceberg_namespaces_pkey"
               },
               "uniques": []
@@ -8252,16 +7708,12 @@
                   "name": "iceberg_tables_catalog_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "catalog_id"
-                    ],
+                    "columns": ["catalog_id"],
                     "namespaceId": "storage",
                     "tableName": "iceberg_tables"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "buckets_analytics"
                   }
@@ -8270,16 +7722,12 @@
                   "name": "iceberg_tables_namespace_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "namespace_id"
-                    ],
+                    "columns": ["namespace_id"],
                     "namespaceId": "storage",
                     "tableName": "iceberg_tables"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "iceberg_namespaces"
                   }
@@ -8287,26 +7735,18 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "location"
-                  ],
+                  "columns": ["location"],
                   "name": "idx_iceberg_tables_location",
                   "unique": true
                 },
                 {
-                  "columns": [
-                    "catalog_id",
-                    "namespace_id",
-                    "name"
-                  ],
+                  "columns": ["catalog_id", "namespace_id", "name"],
                   "name": "idx_iceberg_tables_namespace_id",
                   "unique": true
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "iceberg_tables_pkey"
               },
               "uniques": []
@@ -8344,16 +7784,12 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "migrations_pkey"
               },
               "uniques": [
                 {
-                  "columns": [
-                    "name"
-                  ],
+                  "columns": ["name"],
                   "name": "migrations_name_key"
                 }
               ]
@@ -8418,9 +7854,7 @@
                   "codecId": "pg/text@1",
                   "many": true,
                   "nativeType": "text",
-                  "noCheck": [
-                    "elementNotNull"
-                  ],
+                  "noCheck": ["elementNotNull"],
                   "nullable": true
                 },
                 "updated_at": {
@@ -8447,16 +7881,12 @@
                 {
                   "name": "objects_bucketId_fkey",
                   "source": {
-                    "columns": [
-                      "bucket_id"
-                    ],
+                    "columns": ["bucket_id"],
                     "namespaceId": "storage",
                     "tableName": "objects"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "buckets"
                   }
@@ -8464,18 +7894,12 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "bucket_id",
-                    "name"
-                  ],
+                  "columns": ["bucket_id", "name"],
                   "name": "bucketid_objname",
                   "unique": true
                 },
                 {
-                  "columns": [
-                    "bucket_id",
-                    "name"
-                  ],
+                  "columns": ["bucket_id", "name"],
                   "name": "idx_objects_bucket_id_name",
                   "unique": false
                 },
@@ -8485,17 +7909,13 @@
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "name"
-                  ],
+                  "columns": ["name"],
                   "name": "name_prefix_search",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "objects_pkey"
               },
               "uniques": []
@@ -8565,16 +7985,12 @@
                 {
                   "name": "s3_multipart_uploads_bucket_id_fkey",
                   "source": {
-                    "columns": [
-                      "bucket_id"
-                    ],
+                    "columns": ["bucket_id"],
                     "namespaceId": "storage",
                     "tableName": "s3_multipart_uploads"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "buckets"
                   }
@@ -8582,19 +7998,13 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "bucket_id",
-                    "key",
-                    "created_at"
-                  ],
+                  "columns": ["bucket_id", "key", "created_at"],
                   "name": "idx_multipart_uploads_list",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "s3_multipart_uploads_pkey"
               },
               "uniques": []
@@ -8669,16 +8079,12 @@
                 {
                   "name": "s3_multipart_uploads_parts_bucket_id_fkey",
                   "source": {
-                    "columns": [
-                      "bucket_id"
-                    ],
+                    "columns": ["bucket_id"],
                     "namespaceId": "storage",
                     "tableName": "s3_multipart_uploads_parts"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "buckets"
                   }
@@ -8687,16 +8093,12 @@
                   "name": "s3_multipart_uploads_parts_upload_id_fkey",
                   "onDelete": "cascade",
                   "source": {
-                    "columns": [
-                      "upload_id"
-                    ],
+                    "columns": ["upload_id"],
                     "namespaceId": "storage",
                     "tableName": "s3_multipart_uploads_parts"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "s3_multipart_uploads"
                   }
@@ -8704,9 +8106,7 @@
               ],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "s3_multipart_uploads_parts_pkey"
               },
               "uniques": []
@@ -8775,16 +8175,12 @@
                 {
                   "name": "vector_indexes_bucket_id_fkey",
                   "source": {
-                    "columns": [
-                      "bucket_id"
-                    ],
+                    "columns": ["bucket_id"],
                     "namespaceId": "storage",
                     "tableName": "vector_indexes"
                   },
                   "target": {
-                    "columns": [
-                      "id"
-                    ],
+                    "columns": ["id"],
                     "namespaceId": "storage",
                     "tableName": "buckets_vectors"
                   }
@@ -8792,18 +8188,13 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "name",
-                    "bucket_id"
-                  ],
+                  "columns": ["name", "bucket_id"],
                   "name": "vector_indexes_name_bucket_id_idx",
                   "unique": true
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "id"
-                ],
+                "columns": ["id"],
                 "name": "vector_indexes_pkey"
               },
               "uniques": []
@@ -8812,11 +8203,7 @@
           "valueSet": {
             "Buckettype": {
               "kind": "valueSet",
-              "values": [
-                "STANDARD",
-                "ANALYTICS",
-                "VECTOR"
-              ]
+              "values": ["STANDARD", "ANALYTICS", "VECTOR"]
             }
           }
         },
@@ -8824,7 +8211,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "734893bc990ae5ec14dc7ad50a7d8b5873a864f056085a7ffd2f69c866989067",
+    "storageHash": "43f09411473534105017fa715b8932facbdf79feab1bfc75da681beb87f22cbc",
     "types": {
       "CreatedAt": {
         "codecId": "pg/timestamp-temporal@1",
